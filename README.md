@@ -7,6 +7,7 @@ SSYP18 WS06 Chat Version 2.3.0
 To run application you should:
 -open .sln file
 -add nuget packages (NewtonSoft.Json, Autofac, EntityFramework)
+-change in clients ip
 -debug sever project and few clients
 -use it
 
