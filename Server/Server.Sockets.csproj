@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7BEBAB1-E791-4F55-A79F-5CF962ECD24B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Chat.Socket.Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <StartupObject>Chat.Socket.Server.Launcher</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="Domains\Accounts\UserDB.cs" />
+    <Compile Include="Domains\Messages\ChatMessageFromCLientDB.cs" />
+    <Compile Include="Domains\Messages\FileDB.cs" />
+    <Compile Include="Launcher.cs" />
+    <Compile Include="Migrations\201807051308340_InitialCreate.cs" />
+    <Compile Include="Migrations\201807051308340_InitialCreate.Designer.cs">
+      <DependentUpon>201807051308340_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051413010_UserMigration.cs" />
+    <Compile Include="Migrations\201807051413010_UserMigration.Designer.cs">
+      <DependentUpon>201807051413010_UserMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051841448_AddMessagesMigration.cs" />
+    <Compile Include="Migrations\201807051841448_AddMessagesMigration.Designer.cs">
+      <DependentUpon>201807051841448_AddMessagesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807061033512_AddFilesMigration.cs" />
+    <Compile Include="Migrations\201807061033512_AddFilesMigration.Designer.cs">
+      <DependentUpon>201807061033512_AddFilesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="Domains\Messages\CommandType.cs" />
+    <Compile Include="Domains\Messages\MessageType.cs" />
+    <Compile Include="Services\Implementations\DataStorage.cs" />
+    <Compile Include="Services\Implementations\UsersService.cs" />
+    <Compile Include="Services\DependencyResolver.cs" />
+    <Compile Include="Services\Interfaces\IDataStorage.cs" />
+    <Compile Include="Services\Interfaces\IUsersService.cs" />
+    <Compile Include="Domains\Accounts\User.cs" />
+    <Compile Include="Services\Interfaces\ILogger.cs" />
+    <Compile Include="Services\Implementations\Logger.cs" />
+    <Compile Include="Domains\Messages\BaseMessageContainer.cs" />
+    <Compile Include="Domains\Messages\CommandMessageContainer.cs" />
+    <Compile Include="Domains\Messages\ServerNotificationContainer.cs" />
+    <Compile Include="Domains\Messages\ChatMessageFromClientContainer.cs" />
+    <Compile Include="Domains\Messages\ChatMessageFromServerContainer.cs" />
+    <Compile Include="Services\Interfaces\IConnectionsService.cs" />
+    <Compile Include="Services\Implementations\ConnectionsService.cs" />
+    <Compile Include="Services\Interfaces\ISender.cs" />
+    <Compile Include="Services\Implementations\Sender.cs" />
+    <Compile Include="Services\Interfaces\ICommandHandler.cs" />
+    <Compile Include="Services\Implementations\CommandHandler.cs" />
+    <Compile Include="Services\Interfaces\IPingIdGenerator.cs" />
+    <Compile Include="Services\Implementations\PingIdGenerator.cs" />
+    <Compile Include="Domains\Accounts\Status.cs" />
+    <Compile Include="Domains\DataBaseContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807051308340_InitialCreate.resx">
+      <DependentUpon>201807051308340_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051413010_UserMigration.resx">
+      <DependentUpon>201807051413010_UserMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051841448_AddMessagesMigration.resx">
+      <DependentUpon>201807051841448_AddMessagesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061033512_AddFilesMigration.resx">
+      <DependentUpon>201807061033512_AddFilesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
