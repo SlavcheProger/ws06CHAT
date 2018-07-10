@@ -1,0 +1,2 @@
+Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
