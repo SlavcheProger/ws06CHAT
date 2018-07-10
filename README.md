@@ -6,8 +6,10 @@ SSYP18 WS06 Chat Version 2.3.0
 
 To run application you should:
 -open .sln file
+-add nuget packages (NewtonSoft.Json, Autofac, EntityFramework)
 -debug sever project and few clients
 -use it
+
 
 ------------------------------
 Мастерская №6: "Чат: начало пути"
