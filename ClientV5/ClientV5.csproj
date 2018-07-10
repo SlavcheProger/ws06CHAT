@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56B88C3C-F76D-4FE1-B513-1C3A0E858A2B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ClientV5</RootNamespace>
+    <AssemblyName>ClientV5</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\5.10.1\lib\mono\4.6.1-api\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\ISender.cs" />
+    <Compile Include="Services\Interfaces\IReciever.cs" />
+    <Compile Include="Services\Interfaces\IChatCore.cs" />
+    <Compile Include="Services\Interfaces\ICommandHandler.cs" />
+    <Compile Include="Services\Interfaces\IFileSelector.cs" />
+    <Compile Include="Services\Interfaces\IAccessTokenStorage.cs" />
+    <Compile Include="Services\Interfaces\IDisplayMessageService.cs" />
+    <Compile Include="Services\Interfaces\ILogger.cs" />
+    <Compile Include="Services\Implementations\AccessTokenStorage.cs" />
+    <Compile Include="Services\Implementations\CommandHandler.cs" />
+    <Compile Include="Services\Implementations\ChatCore.cs" />
+    <Compile Include="Services\Implementations\DisplayMessageService.cs" />
+    <Compile Include="Services\Implementations\FileSelector.cs" />
+    <Compile Include="Services\Implementations\Sender.cs" />
+    <Compile Include="Services\Implementations\Reciever.cs" />
+    <Compile Include="Services\Implementations\Logger.cs" />
+    <Compile Include="Services\DependencyResolver.cs" />
+    <Compile Include="ServerConnection.cs" />
+    <Compile Include="Domains\Messages\BaseMessageContainer.cs" />
+    <Compile Include="Domains\Messages\ChatMessageFromClientContainer.cs" />
+    <Compile Include="Domains\Messages\ChatMessageFromServerContainer.cs" />
+    <Compile Include="Domains\Messages\CommandMessageContainer.cs" />
+    <Compile Include="Domains\Messages\CommandType.cs" />
+    <Compile Include="Domains\Messages\MessageType.cs" />
+    <Compile Include="Domains\Messages\ServerNotificationContainer.cs" />
+    <Compile Include="Services\Interfaces\IPingIdGenerator.cs" />
+    <Compile Include="Services\Implementations\PingIdGenerator.cs" />
+    <Compile Include="Services\Implementations\Disconnector.cs" />
+    <Compile Include="Services\Interfaces\IDisconnector.cs" />
+    <Compile Include="Services\Implementations\Invoker.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
